@@ -35,23 +35,26 @@ class ProductsController extends Controller
         return redirect()->route('admin.product.index');
     }
 
-    public function edit(Product $products)
+    public function edit(Product $product)
     {
-        return view('admin.product.edit', compact('products'));
+        $categories = Category::all();
+
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
-    public function update(UpdateRequest $request, Product $products)
+    public function update(UpdateRequest $request, Product $product)
     {
         $data = $request->validated();
+        $data = array_filter($data);
 
-        $products->update($data);
+        $product->update($data);
 
         return redirect()->route('admin.product.index');
     }
 
-    public function delete(Product $products)
+    public function delete(Product $product)
     {
-        $products->delete();
+        $product->delete();
 
         return redirect()->route('admin.product.index');
     }

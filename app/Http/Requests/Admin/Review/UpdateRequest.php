@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Product;
+namespace App\Http\Requests\Admin\Review;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,12 +22,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'system_requirements' => 'nullable',
-            'price' => 'nullable:numeric',
-            'images' => 'nullable',
-            'category_id' => 'nullable:integer'
+            'username' => 'nullable',
+            'content' => 'nullable',
+            'good' => 'nullable'
         ];
     }
 }

@@ -50,4 +50,28 @@ Route::group(['prefix' => 'admin'], function () {
 
     });
 
+    Route::group(['prefix' => 'reviews'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\ReviewsController::class, 'index'])->name('admin.review.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\ReviewsController::class, 'create'])->name('admin.review.create');
+        Route::post('/', [\App\Http\Controllers\Admin\ReviewsController::class, 'store'])->name('admin.review.store');
+        Route::get('/edit/{review}', [\App\Http\Controllers\Admin\ReviewsController::class, 'edit'])->name('admin.review.edit');
+        Route::put('/{review}', [\App\Http\Controllers\Admin\ReviewsController::class, 'update'])->name('admin.review.update');
+        Route::delete('/{review}', [\App\Http\Controllers\Admin\ReviewsController::class, 'delete'])->name('admin.review.delete');
+        Route::get('/data', [\App\Http\Controllers\Admin\ReviewsController::class, 'data'])->name('admin.review.data');
+
+    });
+
+    Route::group(['prefix' => 'promotions'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\PromotionsController::class, 'index'])->name('admin.promotion.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\PromotionsController::class, 'create'])->name('admin.promotion.create');
+        Route::post('/', [\App\Http\Controllers\Admin\PromotionsController::class, 'store'])->name('admin.promotion.store');
+        Route::get('/edit/{promotion}', [\App\Http\Controllers\Admin\PromotionsController::class, 'edit'])->name('admin.promotion.edit');
+        Route::put('/{promotion}', [\App\Http\Controllers\Admin\PromotionsController::class, 'update'])->name('admin.promotion.update');
+        Route::delete('/{promotion}', [\App\Http\Controllers\Admin\PromotionsController::class, 'delete'])->name('admin.promotion.delete');
+        Route::get('/data', [\App\Http\Controllers\Admin\PromotionsController::class, 'data'])->name('admin.promotion.data');
+
+    });
+
 });
