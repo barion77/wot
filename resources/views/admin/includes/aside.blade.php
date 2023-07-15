@@ -41,6 +41,18 @@
                         <p>Промокоды</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.zelenka.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-eye"></i>
+                        <p>Парсер</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.setting.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Настройки</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

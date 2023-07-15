@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Promotion;
+namespace App\Http\Requests\Admin\Setting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,13 +22,13 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable',
-            'code' => 'nullable|min:5',
-            'discount_amount' => 'nullable|numeric|min:1',
-            'max_uses' => 'nullable|integer|min:1',
-            'max_uses_user' => 'nullable|integer|min:1',
-            'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date',
+            'lava_secret_key' => 'required',
+            'shop_id' => 'required|numeric',
+            'telegram_bot_token' => '',
+            'chat_id' => 'nullable|numeric',
+            'send_logs' => '',
+            'telegram_support_link' => 'required',
+            'telegram_channel_link' => 'required',
         ];
     }
 }

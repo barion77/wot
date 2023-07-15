@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Админ-панель</title>
-
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -90,6 +89,10 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 {{--Dropzone--}}
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+{{--Datapicker--}}
+<script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 @yield('scripts')

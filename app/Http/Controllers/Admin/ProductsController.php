@@ -30,6 +30,17 @@ class ProductsController extends Controller
         $data = $request->validated();
         $data['images'] = json_encode($data['images']);
 
+        $slug = Str::slug($data['title']);
+        if (Product::where('slug', $slug)->exists()) {
+            $suffix = 1;
+            while (Product::where('slug', "$slug-$suffix")->exists())
+                $suffix++;
+
+            $slug = "$slug-$suffix";
+        }
+
+        $data['slug'] = $slug;
+
         Product::create($data);
 
         return redirect()->route('admin.product.index');

@@ -37,6 +37,7 @@
                                     <th>Название</th>
                                     <th>Цена</th>
                                     <th>Категория</th>
+                                    <th>Слаг</th>
                                     <th>Создан</th>
                                     <th>Действия</th>
                                 </tr>
@@ -64,6 +65,7 @@
             {"data": "title", "name": "title"},
             {"data": "price", "name": "price"},
             {"data": "category", "name": "category"},
+            {"data": "slug", "name": "slug"},
             {"data": "created", "name": "created"},
             {"data": "actions", "name": "actions", orderable: false, searchable: false},
         ];

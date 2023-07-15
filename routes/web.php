@@ -13,7 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    dd(\App\Models\Setting::find(1)->lava_secret_key);
+});
+
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+
+// Products
+Route::get('/products/{product}', [\App\Http\Controllers\ProductsController::class, 'show'])->name('product.show');
+
+// Reviews
+Route::get('/reviews', [\App\Http\Controllers\ReviewsController::class, 'index'])->name('review');
+Route::post('/reviews', [\App\Http\Controllers\ReviewsController::class, 'store'])->name('review.store');
+
+// Orders
+Route::get('/orders', [\App\Http\Controllers\OrdersController::class, 'index'])->name('order.index');
+Route::post('/orders/get', [\App\Http\Controllers\OrdersController::class, 'index'])->name('order.get');
+
+// Info pages
+Route::get('/guarantee', [\App\Http\Controllers\PagesController::class, 'guarantee'])->name('page.guarantee');
+Route::get('/activation', [\App\Http\Controllers\PagesController::class, 'activation'])->name('page.activation');
+Route::get('/rules', [\App\Http\Controllers\PagesController::class, 'rules'])->name('page.rules');
+Route::get('/support', [\App\Http\Controllers\PagesController::class, 'support'])->name('page.support');
 
 Auth::routes();
 
@@ -71,6 +92,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('/{promotion}', [\App\Http\Controllers\Admin\PromotionsController::class, 'update'])->name('admin.promotion.update');
         Route::delete('/{promotion}', [\App\Http\Controllers\Admin\PromotionsController::class, 'delete'])->name('admin.promotion.delete');
         Route::get('/data', [\App\Http\Controllers\Admin\PromotionsController::class, 'data'])->name('admin.promotion.data');
+
+    });
+
+    Route::group(['prefix' => 'settings'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.setting.index');
+        Route::put('/', [\App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('admin.setting.update');
+
+    });
+
+    Route::group(['prefix' => 'zelenka'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\ZelenkaController::class, 'index'])->name('admin.zelenka.index');
 
     });
 

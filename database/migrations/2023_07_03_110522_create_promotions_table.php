@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedInteger('uses')->default(0);
             $table->unsignedInteger('max_uses')->default(0);
             $table->unsignedInteger('max_uses_user')->default(0);
-            $table->timestamp('starts_at');
-            $table->timestamp('expires_at');
+            $table->timestamp('starts_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
 
             $table->timestamps();
         });

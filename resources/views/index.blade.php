@@ -1,4 +1,4 @@
-﻿@extends('layouts.default')
+@extends('layouts.default')
 
 @section('content')
 
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="banner__right-block mt-3">
-                <a href="http://wotcash-test.webcenter.website/#" class="btn main-btn">Перейти в телеграмм</a>
+                <a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}" class="btn main-btn">Перейти в телеграмм</a>
             </div>
         </div>
 
@@ -56,72 +56,75 @@
 
         <div class="whywe-box catalog-box">
             <ul class="nav nav-pills sys-pills">
-                <li class="col-md-4 active"><a data-toggle="pill"
-                                               href="http://wotcash-test.webcenter.website/#wotRU">WoT RU</a></li>
-                <li class="col-md-4"><a data-toggle="pill" href="http://wotcash-test.webcenter.website/#wotEU">WoT
-                        EU</a></li>
-                <li class="col-md-4"><a data-toggle="pill"
-                                        href="http://wotcash-test.webcenter.website/#wotBlITZ">WoTBLITZ</a></li>
+                <ul class="nav nav-pills sys-pills">
+                    <li class="col-md-4 active"><a data-toggle="pill" href="http://wotcash-test.webcenter.website/#wotRU">WoT RU</a></li>
+                    <li class="col-md-4"><a data-toggle="pill" href="http://wotcash-test.webcenter.website/#wotEU">WoT EU</a></li>
+                    <li class="col-md-4"><a data-toggle="pill" href="http://wotcash-test.webcenter.website/#wotBlITZ">WoTBLITZ</a></li>
+                </ul>
             </ul>
             <div class="tab-content">
                 <div id="wotRU" class="tab-pane fade active in">
-
-                    <h2>Категория WOT RU 1</h2>
-                    <div class="row">
-                        <div class="game-layout col-lg-3 col-md-4 col-sm-6">
-                            <a class="game-thumb" href="http://wotcash-test.webcenter.website/product/1"
-                               title="Аккаунт 1000 боёв">
-                                <div class="game-preview">
-                                    <img src="{{ asset('images/QZfJOxt.png') }}"
-                                         title="Аккаунт 1000 боёв">
+                    @foreach($categories_ru as $category)
+                        <h2>{{ $category->title }}</h2>
+                        <div class="row">
+                            @foreach($category->products as $product)
+                                <div class="game-layout col-lg-3 col-md-4 col-sm-6">
+                                    <a class="game-thumb" href="{{ route('product.show', $product->slug) }}"
+                                       title="Аккаунт 1000 боёв">
+                                        <div class="game-preview">
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($product->getFirstImage()) }}" title="{{ $product->title }}">
+                                        </div>
+                                        <div class="caption">
+                                            <h3>{{ $product->title }}</h3>
+                                            <div class="new-price"><span>{{ $product->price }}</span> ₽</div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <span class="percent-price">-5%</span>
-                                <div class="caption">
-                                    <h3>Аккаунт 1000 боёв</h3>
-                                    <div class="new-price"><span>95</span> ₽</div>
-                                </div>
-                            </a>
+                            @endforeach
                         </div>
-                    </div>
-                    <h2>Категория WOT RU 2</h2>
-                    <div class="row">
-                        <div class="game-layout col-lg-3 col-md-4 col-sm-6">
-                            <a class="game-thumb" href="http://wotcash-test.webcenter.website/product/6"
-                               title="lolz">
-                                <div class="game-preview">
-                                    <img src="{{ asset('images/lKagzvg.jpg') }}" title="lolz">
-                                </div>
-                                <div class="caption">
-                                    <h3>lolz</h3>
-                                    <div class="new-price"><span>5</span> ₽</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
                 <div id="wotEU" class="tab-pane fade">
-                    <h2>Категория WOT EU 1</h2>
-                    <div class="row">
-                    </div>
+                    @foreach($categories_eu as $category)
+                        <h2>{{ $category->title }}</h2>
+                        <div class="row">
+                            @foreach($category->products as $product)
+                                <div class="game-layout col-lg-3 col-md-4 col-sm-6">
+                                    <a class="game-thumb" href="{{ route('product.show', $product->slug) }}"
+                                       title="Аккаунт 1000 боёв">
+                                        <div class="game-preview">
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($product->getFirstImage()) }}" title="{{ $product->title }}">
+                                        </div>
+                                        <div class="caption">
+                                            <h3>{{ $product->title }}</h3>
+                                            <div class="new-price"><span>{{ $product->price }}</span> ₽</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
                 </div>
                 <div id="wotBlITZ" class="tab-pane fade">
-                    <h2>Категория блитзззз</h2>
-                    <div class="row">
-                        <div class="game-layout col-lg-3 col-md-4 col-sm-6">
-                            <a class="game-thumb" href="http://wotcash-test.webcenter.website/product/5"
-                               title="First User">
-                                <div class="game-preview">
-                                    <img src="{{ asset('images/QZfJOxt.png') }}"
-                                         title="First User">
+                    @foreach($categories_blitz as $category)
+                        <h2>{{ $category->title }}</h2>
+                        <div class="row">
+                            @foreach($category->products as $product)
+                                <div class="game-layout col-lg-3 col-md-4 col-sm-6">
+                                    <a class="game-thumb" href="{{ route('product.show', $product->slug) }}"
+                                       title="Аккаунт 1000 боёв">
+                                        <div class="game-preview">
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($product->getFirstImage()) }}" title="{{ $product->title }}">
+                                        </div>
+                                        <div class="caption">
+                                            <h3>{{ $product->title }}</h3>
+                                            <div class="new-price"><span>{{ $product->price }}</span> ₽</div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="caption">
-                                    <h3>First User</h3>
-                                    <div class="new-price"><span>1</span> ₽</div>
-                                </div>
-                            </a>
+                            @endforeach
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -153,58 +156,6 @@
                             больше</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="home-text">
-        <div class="container">
-            <div class="home-text-container hideContent">
-                <h2>Игровые аккаунты WoT</h2>
-                <p>Мы — магазин игровых аккаунтов World Of Tanks, в котором вы всегда сможете найти идеальный для
-                    себя аккаунт по самой приятной цене.
-                    У нас всегда можно отыскать широкий ассортимент аккаунтов на любой вкус.
-                    Мы готовы предоставить для вас как обычные аккаунты для комфортной игры, так и случайные
-                    аккаунты для «фана».
-                </p>
-
-                <div id="demo" class="collapse">
-                    <p>Все аккаунты, которые мы предлагаем, закупаются у проверенных поставщиков. Это означает, что
-                        наш магазин откроет для вас исключительно рабочие аккаунты в отличном качестве.
-                        Все аккаунты на нашем сайте не имеют никаких ограничений, характерных для мошеннических
-                        магазинов. Таким образом,
-                        каждый геймер сможет насладиться полноценной игрой на самом высоком уровне.</p>
-                    <ul>
-                        <li>Мы уже давно задействованы в своем деле. Так, наш магазин аккаунтов радует геймеров уже
-                            более пяти лет.
-                            За это время мы смогли реализовать тысячи аккаунтов по самым доступным ценам.
-                            Свидетельством нашей качественной
-                            работы выступают многочисленные отзывы благодарных клиентов, которые отлично оценивают
-                            наши услуги.
-                            Вы всегда сможете просмотреть актуальные отзывы заказчиков прямо на нашем сайте: мы
-                            оставляем их
-                            открытыми, будь они позитивными, или не очень. Таким образом, вы можете быть полностью
-                            уверенными в
-                            нашей честности и скорости работы.</li>
-                        <li>Наша команда постоянно пополняет ассортимент доступных аккаунтов. Мы неустанно следим за
-                            выпуском новой техники World Of Tanks
-                            , добавляя аккаунты с ней в ассортимент по низким ценам. Все новинки появляются у нас на
-                            сайте
-                            практически в тот же день, когда они выходят в официальный релиз.</li>
-                        <li>Наш сайт отличается максимальным удобством в пользовании. Мы ориентируемся в первую
-                            очередь на комфорт
-                            каждого своего клиента, стараясь соответствующе оптимизировать ресурс. Так, поиск
-                            нужного аккаунта занимает
-                            всего несколько секунд.</li>
-                        <li>Оперативность. Наш магазин готов мгновенно выдать клиентам купленные аккаунты
-                            моментально, сразу
-                            после оплаты заказа. Вам не придется томиться в длительном ожидании, считая часы или
-                            даже дни до
-                            получения желаемого аккаунта.</li>
-                    </ul>
-                </div>
-                <div id="expand-home-text" data-toggle="collapse" data-target="#demo">+</div>
             </div>
         </div>
     </div>

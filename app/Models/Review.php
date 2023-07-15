@@ -10,5 +10,5 @@ class Review extends Model
     use HasFactory;
 
     protected $table = 'reviews';
-    protected $fillable = ['username', 'content', 'good'];
+    protected $fillable = ['username', 'content', 'good', 'telegram', 'telegram_hidden'];
 }

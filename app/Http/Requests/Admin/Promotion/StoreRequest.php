@@ -24,9 +24,9 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required',
             'code' => 'required|min:5',
-            'discount_amount' => 'required|numeric',
-            'max_uses' => 'required|integer',
-            'max_uses_user' => 'required|integer',
+            'discount_amount' => 'required|numeric|min:1',
+            'max_uses' => 'required|integer|min:1',
+            'max_uses_user' => 'required|integer|min:1',
             'starts_at' => 'required|date',
             'expires_at' => 'required|date',
         ];

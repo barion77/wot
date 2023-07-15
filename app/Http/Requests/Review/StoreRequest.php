@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Promotion;
+namespace App\Http\Requests\Review;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable',
-            'code' => 'nullable|min:5',
-            'discount_amount' => 'nullable|numeric|min:1',
-            'max_uses' => 'nullable|integer|min:1',
-            'max_uses_user' => 'nullable|integer|min:1',
-            'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date',
+            'username' => 'required',
+            'content' => 'required',
+            'good' => 'required|numeric',
+            'telegram' => 'required',
+            'telegram_hidden' => 'nullable',
         ];
     }
 }

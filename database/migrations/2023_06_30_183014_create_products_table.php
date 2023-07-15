@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('system_requirements');
             $table->text('images');
             $table->decimal('price');
+            $table->string('slug');
             $table->unsignedBigInteger('category_id');
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

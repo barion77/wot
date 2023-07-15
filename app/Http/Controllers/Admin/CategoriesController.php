@@ -18,7 +18,9 @@ class CategoriesController extends Controller
 
     public function create()
     {
-        return view('admin.category.create');
+        $main_categories = ['WoT RU', 'WoT EU', 'WoTBLITZ'];
+
+        return view('admin.category.create', compact('main_categories'));
     }
 
     public function store(StoreRequest $request)
@@ -32,7 +34,9 @@ class CategoriesController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact('category'));
+        $main_categories = ['WoT RU', 'WoT EU', 'WoTBLITZ'];
+
+        return view('admin.category.edit', compact('category', 'main_categories'));
     }
 
     public function update(UpdateRequest $request, Category $category)
@@ -56,6 +60,11 @@ class CategoriesController extends Controller
         $categories = Category::all();
 
         return DataTables::of($categories)
+            ->editColumn('cat', function($category) {
+                $main_categories = ['WoT RU', 'WoT EU', 'WoTBLITZ'];
+
+                return $main_categories[$category->main_cat];
+            })
             ->editColumn('created', function($category) {
                 return date('Y-m-d H:i:s', strtotime($category->created_at));
             })

@@ -71,35 +71,85 @@
                 </li>
             </ul>
             <div class="nav-logo">
-                <a id="logo" href="http://wotcash-test.webcenter.website/">
+                <a id="logo" href="{{ route('index') }}">
                     <img src="{{ asset('images/logo.svg') }}" alt="">
                 </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://wotcash-test.webcenter.website/orders" class="btn-icon"><span
-                            class="pe-7s-cart"></span><i>Мои покупки</i></a></li>
+                <li><a href="{{ route('order.index') }}" class="btn-icon"><span class="pe-7s-cart"></span><i>Мои покупки</i></a></li>
                 <li>
-                    <a href="http://wotcash-test.webcenter.website/reviews" class="btn-icon"><span class="pe-7s-like"></span><i>Отзывы</i></a>
+                    <a href="{{ route('review') }}" class="btn-icon"><span class="pe-7s-like"></span><i>Отзывы</i></a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div id="sidebar">
-    <a href="http://wotcash-test.webcenter.website/" class="btn main-btn see-all">Перейти в магазин</a>
+    <a href="{{ route('index') }}" class="btn main-btn see-all">Перейти в магазин</a>
     <div class="sidebar-title">Информация</div>
     <ul class="sidebar-list">
-        <li><a href="http://wotcash-test.webcenter.website/warranties">Гарантии</a></li>
-        <li><a href="http://wotcash-test.webcenter.website/activations">Как войти в аккаунт?</a></li>
-        <li><a href="http://wotcash-test.webcenter.website/reviews">Отзывы</a></li>
-        <li><a href="http://wotcash-test.webcenter.website/support">Помощь и поддержка</a></li>
-        <li><a href="http://wotcash-test.webcenter.website/agreements">Правила магазина</a></li>
+        <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
+        <li><a href="{{ route('page.activation') }}">Как войти в аккаунт?</a></li>
+        <li><a href="{{ route('review') }}">Отзывы</a></li>
+        <li><a href="{{ route('page.rules') }}">Помощь и поддержка</a></li>
+        <li><a href="{{ route('page.support') }}">Правила магазина</a></li>
     </ul>
 </div>
 
 <div class="wrapper">
 
     @yield('content')
+
+    <div class="home-text">
+        <div class="container">
+            <div class="home-text-container hideContent">
+                <h2>Игровые аккаунты WoT</h2>
+                <p>Мы — магазин игровых аккаунтов World Of Tanks, в котором вы всегда сможете найти идеальный для
+                    себя аккаунт по самой приятной цене.
+                    У нас всегда можно отыскать широкий ассортимент аккаунтов на любой вкус.
+                    Мы готовы предоставить для вас как обычные аккаунты для комфортной игры, так и случайные
+                    аккаунты для «фана».
+                </p>
+
+                <div id="demo" class="collapse">
+                    <p>Все аккаунты, которые мы предлагаем, закупаются у проверенных поставщиков. Это означает, что
+                        наш магазин откроет для вас исключительно рабочие аккаунты в отличном качестве.
+                        Все аккаунты на нашем сайте не имеют никаких ограничений, характерных для мошеннических
+                        магазинов. Таким образом,
+                        каждый геймер сможет насладиться полноценной игрой на самом высоком уровне.</p>
+                    <ul>
+                        <li>Мы уже давно задействованы в своем деле. Так, наш магазин аккаунтов радует геймеров уже
+                            более пяти лет.
+                            За это время мы смогли реализовать тысячи аккаунтов по самым доступным ценам.
+                            Свидетельством нашей качественной
+                            работы выступают многочисленные отзывы благодарных клиентов, которые отлично оценивают
+                            наши услуги.
+                            Вы всегда сможете просмотреть актуальные отзывы заказчиков прямо на нашем сайте: мы
+                            оставляем их
+                            открытыми, будь они позитивными, или не очень. Таким образом, вы можете быть полностью
+                            уверенными в
+                            нашей честности и скорости работы.</li>
+                        <li>Наша команда постоянно пополняет ассортимент доступных аккаунтов. Мы неустанно следим за
+                            выпуском новой техники World Of Tanks
+                            , добавляя аккаунты с ней в ассортимент по низким ценам. Все новинки появляются у нас на
+                            сайте
+                            практически в тот же день, когда они выходят в официальный релиз.</li>
+                        <li>Наш сайт отличается максимальным удобством в пользовании. Мы ориентируемся в первую
+                            очередь на комфорт
+                            каждого своего клиента, стараясь соответствующе оптимизировать ресурс. Так, поиск
+                            нужного аккаунта занимает
+                            всего несколько секунд.</li>
+                        <li>Оперативность. Наш магазин готов мгновенно выдать клиентам купленные аккаунты
+                            моментально, сразу
+                            после оплаты заказа. Вам не придется томиться в длительном ожидании, считая часы или
+                            даже дни до
+                            получения желаемого аккаунта.</li>
+                    </ul>
+                </div>
+                <div id="expand-home-text" data-toggle="collapse" data-target="#demo">+</div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="advantages">
@@ -149,20 +199,20 @@
                             WOT.TEST — магазин аккаунтов WoT. <br>
                             Здесь вы можете купить аккаунты для World Of Tanks. <br>
                             Постоянные скидки и акции в магазине сделают покупку аккаунтов доступной. <br>
-                            По всем вопросам: <a href="https://t.me/thecaardinal">https://t.me/thecaardinal</a>
+                            По всем вопросам: <a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <h5>Информация</h5>
                     <ul class="list-unstyled">
-                        <li><a href="http://wotcash-test.webcenter.website/warranties">Гарантии</a></li>
-                        <li><a href="http://wotcash-test.webcenter.website/activations">Как войти в аккаунт?</a>
+                        <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
+                        <li><a href="{{ route('page.activation') }}">Как войти в аккаунт?</a>
                         </li>
-                        <li><a href="http://wotcash-test.webcenter.website/reviews">Отзывы</a></li>
-                        <li><a href="http://wotcash-test.webcenter.website/support">Помощь и поддержка</a></li>
-                        <li><a href="http://wotcash-test.webcenter.website/agreements">Правила магазина</a></li>
-                        <li><a href="https://t.me/thecaardinal">Наш телеграмм</a></li>
+                        <li><a href="{{ route('review') }}">Отзывы</a></li>
+                        <li><a href="{{ route('page.support') }}">Помощь и поддержка</a></li>
+                        <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
+                        <li><a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">Наш телеграмм</a></li>
                     </ul>
                 </div>
             </div>
