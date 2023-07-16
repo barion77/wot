@@ -26,6 +26,8 @@
         }
     </style>
 
+    @yield('styles')
+
 
     <style>
         *::-webkit-scrollbar {
@@ -89,7 +91,7 @@
     <div class="sidebar-title">Информация</div>
     <ul class="sidebar-list">
         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
-        <li><a href="{{ route('page.activation') }}">Как войти в аккаунт?</a></li>
+        <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
         <li><a href="{{ route('review') }}">Отзывы</a></li>
         <li><a href="{{ route('page.rules') }}">Помощь и поддержка</a></li>
         <li><a href="{{ route('page.support') }}">Правила магазина</a></li>
@@ -207,8 +209,7 @@
                     <h5>Информация</h5>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
-                        <li><a href="{{ route('page.activation') }}">Как войти в аккаунт?</a>
-                        </li>
+                        <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
                         <li><a href="{{ route('review') }}">Отзывы</a></li>
                         <li><a href="{{ route('page.support') }}">Помощь и поддержка</a></li>
                         <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
@@ -233,6 +234,7 @@
 <script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/noty.min.js') }}" type="text/javascript"></script>
+@yield('scripts')
 </body>
 
 </html>

@@ -20,11 +20,11 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.category.store') }}" method="POST" class="w-50" enctype="multipart/form-data">
+                        <form action="{{ route('admin.scammer.store') }}" method="POST" class="w-50" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Название</label>
-                                <input type="text" class="form-control" name="title" placeholder="Название" value="{{ old('title') ?? old('title') }}">
+                                <input type="text" class="form-control" name="name" placeholder="Название" value="{{ old('title') ?? null }}">
                                 @error('title')
                                 <div class="text-danger mb-3">
                                     {{ $message }}
@@ -32,14 +32,9 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Выберите категорию</label>
-                                <select name="main_cat" class="form-control">
-                                    <option>Выберите основную категорию</option>
-                                    @foreach($main_categories as $key => $cat)
-                                        <option value="{{ $key }}">{{ $cat }}</option>
-                                    @endforeach
-                                </select>
-                                @error('title')
+                                <label>Описание</label>
+                                <textarea name="description" class="form-control"></textarea>
+                                @error('description')
                                 <div class="text-danger mb-3">
                                     {{ $message }}
                                 </div>
@@ -60,3 +55,4 @@
         <!-- /.content -->
     </div>
 @endsection
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scammer;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -24,5 +25,12 @@ class PagesController extends Controller
     public function support()
     {
         return view('pages.support');
+    }
+
+    public function scammers()
+    {
+        $scammers = Scammer::all();
+
+        return view('pages.scammers', compact('scammers'));
     }
 }

@@ -35,6 +35,7 @@ Route::get('/guarantee', [\App\Http\Controllers\PagesController::class, 'guarant
 Route::get('/activation', [\App\Http\Controllers\PagesController::class, 'activation'])->name('page.activation');
 Route::get('/rules', [\App\Http\Controllers\PagesController::class, 'rules'])->name('page.rules');
 Route::get('/support', [\App\Http\Controllers\PagesController::class, 'support'])->name('page.support');
+Route::get('/scammers', [\App\Http\Controllers\PagesController::class, 'scammers'])->name('page.scammer');
 
 Auth::routes();
 
@@ -105,6 +106,17 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'zelenka'], function () {
 
         Route::get('/', [\App\Http\Controllers\Admin\ZelenkaController::class, 'index'])->name('admin.zelenka.index');
+
+    });
+
+    Route::group(['prefix' => 'scammers'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\ScammersController::class, 'index'])->name('admin.scammer.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\ScammersController::class, 'create'])->name('admin.scammer.create');
+        Route::post('/', [\App\Http\Controllers\Admin\ScammersController::class, 'store'])->name('admin.scammer.store');
+        Route::get('/{scammer}', [\App\Http\Controllers\Admin\ScammersController::class, 'edit'])->name('admin.scammer.edit');
+        Route::put('/{scammer}', [\App\Http\Controllers\Admin\ScammersController::class, 'update'])->name('admin.scammer.update');
+        Route::delete('/{scammer}', [\App\Http\Controllers\Admin\ScammersController::class, 'delete'])->name('admin.scammer.delete');
 
     });
 

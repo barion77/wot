@@ -42,6 +42,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.promotion.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Страницы</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.scammer.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-thumbs-down"></i>
+                        <p>Мошенники</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.zelenka.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-eye"></i>
                         <p>Парсер</p>
