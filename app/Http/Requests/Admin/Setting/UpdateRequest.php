@@ -29,6 +29,7 @@ class UpdateRequest extends FormRequest
             'send_logs' => '',
             'telegram_support_link' => 'required',
             'telegram_channel_link' => 'required',
+            'zelenka_token' => 'required',
         ];
     }
 }

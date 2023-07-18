@@ -32,31 +32,20 @@
                                 </div>
 
 
-                                <form class="form_order" method="post" id="buyForm">
+                                <form action="{{ route('product.buy', $product->slug) }}" method="post" class="form_order">
+                                    @csrf
                                     <h4>Покупка</h4>
                                     <div>
                                         <input type="email" name="email" placeholder="Ваш Email" class="userEmail">
-                                        <input type="text" name="promo" placeholder="Укажите промокод"
-                                               class="promoInput mt-3">
-                                        <input type="password" name="password"
-                                               placeholder="Укажите пароль, если никогда не покупали"
-                                               class="passwordInput mt-3">
-                                        <input type="hidden" name="id" value="6" class="itemID">
-                                        <input type="hidden" name="promoId" value="" class="promoID">
+                                        <input type="text" name="promo" placeholder="Укажите промокод" class="promoInput mt-3">
+                                        <input type="password" name="password" placeholder="Укажите пароль, если никогда не покупали" class="passwordInput mt-3">
                                     </div>
                                     <br>
                                     <div class="text-center d-flex justify-content-between">
-                                        <button class="btn main-btn align-items-center" type="button"
-                                                id="promoAccept">
-                                            Применить промо
-                                        </button>
-                                        <button class="btn main-btn align-items-center" type="button" id="butBuy">
-                                            Купить сейчас
-                                        </button>
+                                        <button class="btn main-btn align-items-center" type="button" id="promoAccept">Применить промо</button>
+                                        <button class="btn main-btn align-items-center" type="submit">Купить сейчас</button>
                                     </div>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
@@ -114,7 +103,7 @@
                 <div class="col-lg-4 col-md-5">
                     <h2>Инструкция</h2>
                     <div class="card">
-                        {!! $product->system_requirements !!}
+                        {!! $product->instruction !!}
                     </div>
                 </div>
             </div>

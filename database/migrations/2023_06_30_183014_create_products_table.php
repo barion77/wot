@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('description');
-            $table->text('system_requirements');
+            $table->text('instruction');
             $table->text('images');
             $table->decimal('price');
             $table->string('slug');

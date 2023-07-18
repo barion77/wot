@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'nullable',
             'description' => 'nullable',
-            'system_requirements' => 'nullable',
+            'instruction' => 'nullable',
             'price' => 'nullable:numeric',
             'images' => 'nullable',
             'category_id' => 'nullable:integer'

@@ -93,8 +93,8 @@
         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
         <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
         <li><a href="{{ route('review') }}">Отзывы</a></li>
-        <li><a href="{{ route('page.rules') }}">Помощь и поддержка</a></li>
-        <li><a href="{{ route('page.support') }}">Правила магазина</a></li>
+        <li><a href="{{ route('page.support') }}">ЧаВо</a></li>
+        <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
     </ul>
 </div>
 
@@ -211,7 +211,7 @@
                         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
                         <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
                         <li><a href="{{ route('review') }}">Отзывы</a></li>
-                        <li><a href="{{ route('page.support') }}">Помощь и поддержка</a></li>
+                        <li><a href="{{ route('page.support') }}">ЧаВо</a></li>
                         <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
                         <li><a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">Наш телеграмм</a></li>
                     </ul>

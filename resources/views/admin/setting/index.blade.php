@@ -63,6 +63,28 @@
                             </div>
                                 <div class="card">
                                     <div class="card-header">
+                                        <h3 class="card-title">Zelenka API</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                                    title="Collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Токен</label>
+                                            <input type="text" name="zelenka_token" class="form-control" placeholder="Токен..." value="{{ !empty($settings) && !empty($settings->zelenka_token) ? $settings->zelenka_token : '' }}">
+                                            @error('zelenka_token')
+                                            <div class="text-danger mb-3">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
                                         <h3 class="card-title">Контакты</h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"

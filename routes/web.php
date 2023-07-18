@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-    dd(\App\Models\Setting::find(1)->lava_secret_key);
+
+    $zelenka_api = new \App\Classes\Zelenka\ZelenkaApi();
+
+    dd($zelenka_api->getItemsList());
+
 });
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
@@ -29,6 +33,10 @@ Route::post('/reviews', [\App\Http\Controllers\ReviewsController::class, 'store'
 // Orders
 Route::get('/orders', [\App\Http\Controllers\OrdersController::class, 'index'])->name('order.index');
 Route::post('/orders/get', [\App\Http\Controllers\OrdersController::class, 'index'])->name('order.get');
+
+// Purchase
+Route::post('/product/buy/{product}', [\App\Http\Controllers\ProductsController::class, 'buy'])->name('product.buy');
+Route::get('/purchase/product/{invoice}', [\App\Http\Controllers\ProductsController::class, 'getPurchaseDetails'])->name('purchase.details');
 
 // Info pages
 Route::get('/guarantee', [\App\Http\Controllers\PagesController::class, 'guarantee'])->name('page.guarantee');

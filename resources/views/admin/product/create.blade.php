@@ -44,9 +44,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Системные требование</label>
-                                <textarea class="form-control" id="system_requirements"
-                                          name="system_requirements">{{ old('system_requirements') ?? null }}</textarea>
-                                @error('system_requirements')
+                                <textarea class="form-control" id="instruction"
+                                          name="instruction">{{ old('instruction') ?? null }}</textarea>
+                                @error('instruction')
                                 <div class="text-danger mb-3">
                                     {{ $message }}
                                 </div>
@@ -110,8 +110,8 @@
         });
 
         $(document).ready(function () {
-            $('#system_requirements').summernote({
-                "placeholder": "Системные требование",
+            $('#instruction').summernote({
+                "placeholder": "Инструкция",
                 "height": 200,
             });
         });
