@@ -114,6 +114,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'zelenka'], function () {
 
         Route::get('/', [\App\Http\Controllers\Admin\ZelenkaController::class, 'index'])->name('admin.zelenka.index');
+        Route::get('/parse', [\App\Http\Controllers\Admin\ZelenkaController::class, 'parse'])->name('admin.zelenka.parse');
 
     });
 

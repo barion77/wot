@@ -30,6 +30,9 @@ class ProductsController extends Controller
         $data = $request->validated();
         $data['images'] = json_encode($data['images']);
 
+        $account_data = ['login' => $data['login'], 'password' => $data['password']];
+        $data['data'] = json_encode($account_data);
+
         $slug = Str::slug($data['title']);
         if (Product::where('slug', $slug)->exists()) {
             $suffix = 1;

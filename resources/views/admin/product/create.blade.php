@@ -81,6 +81,26 @@
                                 </div>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label>Логин от аккаунта</label>
+                                <input type="text" class="form-control" name="login" placeholder="Логин"
+                                       value="{{ old('login') ?? null }}">
+                                @error('login')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль от аккаунта</label>
+                                <input type="text" class="form-control" name="password" placeholder="Пароль"
+                                       value="{{ old('password') ?? null }}">
+                                @error('password')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                             <input type="submit" class="btn btn-success" value="Создать">
                         </form>
                     </div>

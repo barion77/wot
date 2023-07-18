@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('slug');
             $table->unsignedBigInteger('category_id');
+            $table->text('data')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 

@@ -23,7 +23,7 @@ class ZelenkaApi
         $data = http_build_query($data);
         $url = $this->api_url . $api_method;
 
-        if (strtolower($request_method) == 'get')
+        if (strtolower($request_method) == 'get' && !empty($data))
             $url .= "?$data";
 
         $ch = curl_init($url);
@@ -48,8 +48,13 @@ class ZelenkaApi
 
     }
 
-    public function getItemsList()
+    public function getItemsList($category, $data = [])
     {
-        return $this->request('world-of-tanks', 'GET');
+        return $this->request($category, 'GET', $data);
+    }
+
+    public function addProducts()
+    {
+
     }
 }
