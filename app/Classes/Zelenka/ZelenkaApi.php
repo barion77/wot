@@ -20,11 +20,20 @@ class ZelenkaApi
 
     public function request($api_method, $request_method, $data = [])
     {
+        $region = '';
+        if (!empty($data['region'])) {
+            $region = $data['region'];
+            unset($data['region']);
+        }
+
         $data = http_build_query($data);
         $url = $this->api_url . $api_method;
 
         if (strtolower($request_method) == 'get' && !empty($data))
             $url .= "?$data";
+
+        if (!empty($region))
+            $url .= "&region[]=$region";
 
         $ch = curl_init($url);
 
@@ -53,8 +62,8 @@ class ZelenkaApi
         return $this->request($category, 'GET', $data);
     }
 
-    public function addProducts()
+    public function getItem($item_id)
     {
-
+        return $this->request($item_id, 'GET');
     }
 }
