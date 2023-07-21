@@ -2,42 +2,44 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Classes\Zelenka\Parser;
 use App\Classes\Zelenka\ZelenkaApi;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Instruction;
 use Illuminate\Http\Request;
 
 class ZelenkaController extends Controller
 {
     public function index()
     {
-        return view('admin.zelenka.index');
+        $categories = Category::all();
+        $instructions = Instruction::all();
+
+        return view('admin.zelenka.index', compact('categories', 'instructions'));
     }
 
     public function parse(Request $request)
     {
         $data = $request->all();
+        if ($data['parse_type'] == 'url')
+            $data = $request->validate([
+                'url' => 'required',
+                'category_id' => 'required|integer',
+                'price' => 'required|integer',
+                'parse_type' => 'required',
+                'instruction_id' => 'required',
+            ]);
 
-        $zelenka_api = new ZelenkaApi();
+        $parser = new Parser();
 
         if ($data['parse_type'] == 'url') {
+            $parse_status = $parser->addItemWithDescription($data['url'], $data['category_id'], $data['price'], $data['instruction_id']);
 
-            $item_id = preg_replace("/[^0-9]/", '', $data['url']);
-            $item = $zelenka_api->getItem($item_id);
-
-            dd($item);
-
+            return redirect()->back()->with('parse_status', $parse_status);
         }
-
-        $category = $data['category'];
-        unset($data['category']);
-
-        $data = array_filter($data);
-
-        if (!empty($data['tel']))
-            $data['tel'] = $data['tel'] == 'yes';
-
-        $items = $zelenka_api->getItemsList($category, $data);
-
-        dd($items);
+        else {
+            dd('Not complete');
+        }
     }
 }

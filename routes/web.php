@@ -129,4 +129,15 @@ Route::group(['prefix' => 'admin'], function () {
 
     });
 
+    Route::group(['prefix' => 'instructions'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\InstructionsController::class, 'index'])->name('admin.instruction.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\InstructionsController::class, 'create'])->name('admin.instruction.create');
+        Route::post('/', [\App\Http\Controllers\Admin\InstructionsController::class, 'store'])->name('admin.instruction.store');
+        Route::get('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'edit'])->name('admin.instruction.edit');
+        Route::put('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'update'])->name('admin.instruction.update');
+        Route::delete('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'delete'])->name('admin.instruction.delete');
+
+    });
+
 });

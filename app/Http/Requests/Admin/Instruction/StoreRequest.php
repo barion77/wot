@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Product;
+namespace App\Http\Requests\Admin\Instruction;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,13 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required',
-            'instruction_id' => 'required',
-            'price' => 'required|numeric',
-            'category_id' => 'required',
-            'images' => 'required|array',
-            'login' => 'required',
-            'password' => 'required',
+            'content' => 'required',
         ];
     }
 }

@@ -101,9 +101,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-5">
-                    <h2>Инструкция</h2>
+                    <h2>{{ $product->instruction->title }}</h2>
                     <div class="card">
-                        {!! $product->instruction !!}
+                        {!! $product->instruction->content !!}
                     </div>
                 </div>
             </div>

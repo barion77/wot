@@ -10,11 +10,16 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'products';
-    protected $fillable = ['title', 'description', 'instruction', 'main_image', 'images', 'price', 'category_id', 'slug', 'data'];
+    protected $fillable = ['title', 'description', 'instruction_id', 'main_image', 'images', 'price', 'category_id', 'slug', 'data'];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function instruction()
+    {
+        return $this->belongsTo(Instruction::class);
     }
 
     public function getRouteKeyName()
@@ -43,5 +48,10 @@ class Product extends Model
         $images = $this->getImages();
 
         return $images[0];
+    }
+
+    public function getAccountData()
+    {
+        return json_decode($this->data, true);
     }
 }

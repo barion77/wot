@@ -48,6 +48,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.instruction.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-question"></i>
+                        <p>Инструкции</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.scammer.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-thumbs-down"></i>
                         <p>Мошенники</p>

@@ -44,14 +44,13 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Системные требование</label>
-                                <textarea class="form-control" id="instruction"
-                                          name="instruction">{{ $product->instruction }}</textarea>
-                                @error('instruction')
-                                <div class="text-danger mb-3">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label>Инструкция</label>
+                                <select name="instruction_id" class="form-control">
+                                    <option>Выберите инструкцию</option>
+                                    @foreach($instructions as $instruction)
+                                        <option value="{{ $instruction->id }}" {{ $product->instruction_id == $instruction->id ? 'selected' : '' }}>{{ $instruction->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Цена</label>
@@ -77,6 +76,26 @@
                                 <label>Изображения</label>
                                 <div id="dropzone" class="dropzone"></div>
                                 @error('images')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Логин от аккаунта</label>
+                                <input type="text" class="form-control" name="login" placeholder="Логин"
+                                       value="{{ $product->getAccountData()['login'] }}">
+                                @error('login')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль от аккаунта</label>
+                                <input type="text" class="form-control" name="password" placeholder="Пароль"
+                                       value="{{ $product->getAccountData()['password'] }}">
+                                @error('password')
                                 <div class="text-danger mb-3">
                                     {{ $message }}
                                 </div>

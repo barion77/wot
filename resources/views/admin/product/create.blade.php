@@ -43,14 +43,13 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Системные требование</label>
-                                <textarea class="form-control" id="instruction"
-                                          name="instruction">{{ old('instruction') ?? null }}</textarea>
-                                @error('instruction')
-                                <div class="text-danger mb-3">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label>Инструкция</label>
+                                <select name="instruction_id" class="form-control">
+                                    <option>Выберите инструкцию</option>
+                                    @foreach($instructions as $instruction)
+                                        <option value="{{ $instruction->id }}" {{ old('instruction_id') == $instruction->id ? 'selected' : '' }}>{{ $instruction->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Цена</label>

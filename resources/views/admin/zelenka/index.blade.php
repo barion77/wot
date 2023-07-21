@@ -26,6 +26,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+                        @if (\Illuminate\Support\Facades\Session::get('parse_status') === true)
+                            <div class="alert alert-success" role="alert">
+                                Аккаунт успешно спарсен и добавелн в продажу
+                            </div>
+                        @endif
+                        @if (\Illuminate\Support\Facades\Session::get('parse_status') === false)
+                            <div class="alert alert-danger" role="alert">
+                                Не удалось спарсить аккаунт или такой аккаунт уже есть в базе
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-12">
                         <form action="{{ route('admin.zelenka.parse') }}" method="get">
                         @csrf
                         <!-- Default box -->
@@ -46,10 +58,57 @@
                                             <option selected value="url">Аккаунт с описание</option>
                                             <option value="rand">Рандомные аккаунты</option>
                                         </select>
+                                        @error('parse_type')
+                                        <div class="text-danger mb-3">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
-                                    <div class="form-group" id="product-url">
-                                        <label>Ссылка на товар</label>
-                                        <input type="text" name="url" class="form-control">
+                                    <div id="parse-type-url">
+                                        <div class="form-group" id="product-url">
+                                            <label>Ссылка на товар</label>
+                                            <input type="text" name="url" class="form-control">
+                                            @error('url')
+                                            <div class="text-danger mb-3">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group" id="product-url">
+                                            <label>Категория</label>
+                                            <select name="category_id" class="form-control">
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                            <div class="text-danger mb-3">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group" id="product-url">
+                                            <label>Инструкция</label>
+                                            <select name="instruction_id" class="form-control">
+                                                @foreach($instructions as $instruction)
+                                                    <option value="{{ $instruction->id }}">{{ $instruction->title }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('instruction_id')
+                                            <div class="text-danger mb-3">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group" id="product-url">
+                                            <label>Цена</label>
+                                            <input type="number" name="price" class="form-control">
+                                            @error('price')
+                                            <div class="text-danger mb-3">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="filters" id="filters" style="display: none">
                                         <div>Привязка к телефону</div>

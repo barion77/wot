@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('description');
-            $table->text('instruction');
+            $table->unsignedBigInteger('instruction_id');
             $table->text('images');
             $table->decimal('price');
             $table->string('slug');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('data')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('instruction_id')->references('id')->on('instructions')->onDelete('cascade');
 
             $table->timestamps();
         });

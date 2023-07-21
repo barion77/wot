@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\StoreRequest;
 use App\Http\Requests\Admin\Product\UpdateRequest;
 use App\Models\Category;
+use App\Models\Instruction;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,8 +22,9 @@ class ProductsController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $instructions = Instruction::all();
 
-        return view('admin.product.create', compact('categories'));
+        return view('admin.product.create', compact('categories', 'instructions'));
     }
 
     public function store(StoreRequest $request)
@@ -52,13 +54,18 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
+        $instructions = Instruction::all();
 
-        return view('admin.product.edit', compact('product', 'categories'));
+        return view('admin.product.edit', compact('product', 'categories', 'instructions'));
     }
 
     public function update(UpdateRequest $request, Product $product)
     {
         $data = $request->validated();
+
+        $account_data = ['login' => $data['login'], 'password' => $data['password']];
+        $data['data'] = json_encode($account_data);
+
         $data = array_filter($data);
 
         $product->update($data);
