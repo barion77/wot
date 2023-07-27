@@ -24,8 +24,17 @@
                             @csrf
                             <div class="form-group">
                                 <label>Название</label>
-                                <input type="text" class="form-control" name="title" placeholder="Название" value="{{ old('title') ?? old('title') }}">
+                                <input type="text" class="form-control" name="title" placeholder="Название" value="{{ old('title') ?? null }}">
                                 @error('title')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Вес</label>
+                                <input type="number" class="form-control" name="weight" placeholder="Вес" value="{{ old('weight') ?? null }}">
+                                @error('weight')
                                 <div class="text-danger mb-3">
                                     {{ $message }}
                                 </div>

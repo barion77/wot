@@ -94,6 +94,7 @@
                                                     <option value="{{ $instruction->id }}">{{ $instruction->title }}</option>
                                                 @endforeach
                                             </select>
+
                                             @error('instruction_id')
                                             <div class="text-danger mb-3">
                                                 {{ $message }}

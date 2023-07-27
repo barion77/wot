@@ -93,7 +93,7 @@
         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
         <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
         <li><a href="{{ route('review') }}">Отзывы</a></li>
-        <li><a href="{{ route('page.support') }}">ЧаВо</a></li>
+        <li><a href="{{ url('support') }}">ЧаВо</a></li>
         <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
     </ul>
 </div>
@@ -105,7 +105,7 @@
     <div class="home-text">
         <div class="container">
             <div class="home-text-container hideContent">
-                <h2>Игровые аккаунты WoT</h2>
+                <h2>Немного о нашем магазине</h2>
                 <p>Мы — магазин игровых аккаунтов World Of Tanks, в котором вы всегда сможете найти идеальный для
                     себя аккаунт по самой приятной цене.
                     У нас всегда можно отыскать широкий ассортимент аккаунтов на любой вкус.
@@ -201,7 +201,6 @@
                             WOT.TEST — магазин аккаунтов WoT. <br>
                             Здесь вы можете купить аккаунты для World Of Tanks. <br>
                             Постоянные скидки и акции в магазине сделают покупку аккаунтов доступной. <br>
-                            По всем вопросам: <a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}</a>
                         </div>
                     </div>
                 </div>
@@ -211,8 +210,8 @@
                         <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
                         <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
                         <li><a href="{{ route('review') }}">Отзывы</a></li>
-                        <li><a href="{{ route('page.support') }}">ЧаВо</a></li>
-                        <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
+                        <li><a href="{{ url('support') }}">ЧаВо</a></li>
+                        <li><a href="{{ url('rules') }}">Правила магазина</a></li>
                         <li><a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">Наш телеграмм</a></li>
                     </ul>
                 </div>

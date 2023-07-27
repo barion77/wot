@@ -24,6 +24,7 @@ class ReviewsController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+        $data = array_filter($data);
 
         Review::create($data);
 
@@ -38,6 +39,7 @@ class ReviewsController extends Controller
     public function update(UpdateRequest $request, Review $review)
     {
         $data = $request->validated();
+        $data = array_filter($data);
 
         $review->update($data);
 

@@ -23,6 +23,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'username' => 'required',
+            'telegram' => 'required',
+            'telegram_hidden' => 'nullable',
             'content' => 'required',
             'good' => 'required|numeric'
         ];

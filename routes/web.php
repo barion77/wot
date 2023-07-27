@@ -42,8 +42,9 @@ Route::get('/purchase/product/{invoice}', [\App\Http\Controllers\ProductsControl
 Route::get('/guarantee', [\App\Http\Controllers\PagesController::class, 'guarantee'])->name('page.guarantee');
 Route::get('/activation', [\App\Http\Controllers\PagesController::class, 'activation'])->name('page.activation');
 Route::get('/rules', [\App\Http\Controllers\PagesController::class, 'rules'])->name('page.rules');
-Route::get('/support', [\App\Http\Controllers\PagesController::class, 'support'])->name('page.support');
 Route::get('/scammers', [\App\Http\Controllers\PagesController::class, 'scammers'])->name('page.scammer');
+
+Route::get('/{page}', [\App\Http\Controllers\PagesController::class, 'showPage'])->name('page.show');
 
 Auth::routes();
 
@@ -137,6 +138,18 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'edit'])->name('admin.instruction.edit');
         Route::put('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'update'])->name('admin.instruction.update');
         Route::delete('/{instruction}', [\App\Http\Controllers\Admin\InstructionsController::class, 'delete'])->name('admin.instruction.delete');
+
+    });
+
+    Route::group(['prefix' => 'pages'], function () {
+
+        Route::get('/', [\App\Http\Controllers\Admin\PagesController::class, 'index'])->name('admin.page.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\PagesController::class, 'create'])->name('admin.page.create');
+        Route::post('/', [\App\Http\Controllers\Admin\PagesController::class, 'store'])->name('admin.page.store');
+        Route::get('/edit/{page}', [\App\Http\Controllers\Admin\PagesController::class, 'edit'])->name('admin.page.edit');
+        Route::put('/{page}', [\App\Http\Controllers\Admin\PagesController::class, 'update'])->name('admin.page.update');
+        Route::delete('/{page}', [\App\Http\Controllers\Admin\PagesController::class, 'delete'])->name('admin.page.delete');
+        Route::get('/data', [\App\Http\Controllers\Admin\PagesController::class, 'data'])->name('admin.page.data');
 
     });
 

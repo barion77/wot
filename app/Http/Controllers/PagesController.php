@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Scammer;
 use Illuminate\Http\Request;
 
@@ -32,5 +33,10 @@ class PagesController extends Controller
         $scammers = Scammer::all();
 
         return view('pages.scammers', compact('scammers'));
+    }
+
+    public function showPage(Page $page)
+    {
+        return view('pages.dynamic', compact('page'));
     }
 }

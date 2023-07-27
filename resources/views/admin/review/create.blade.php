@@ -32,6 +32,24 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Телеграм</label>
+                                <input type="text" class="form-control" name="telegram" placeholder="Телеграм" value="{{ old('telegram') ?? null }}">
+                                @error('telegram')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="telegram_hidden" class="form-check-input" value="1">
+                                <label>Скрыть телеграм</label>
+                                @error('good')
+                                <div class="text-danger mb-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Текст</label>
                                 <textarea class="form-control" name="content">{{ old('content') ?? null }}</textarea>
                                 @error('content')
