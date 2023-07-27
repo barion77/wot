@@ -46,15 +46,18 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-12">
-                        @foreach($scammers as $scammer)
-                            <div class="spoiler">
-                            <label class="spoiler-label">{{ $scammer->name }}</label>
-                            <div class="spoiler-content">
-                                <p>{{ $scammer->description }}</p>
+                        <p>Если вы обнаружили магазин-кидалу сообщите нам вместе мы сможем найти их всех.</p>
+                        @foreach($scammers as $key => $scammer)
+                            <div class="home-text-container hideContent" style="margin-bottom: 30px">
+                                <h2>{{ $scammer->name }}</h2>
+                                <div id="demo{{$key + 1}}" class="collapse" aria-expanded="false">
+                                    <p>{{ $scammer->description }}</p>
+                                </div>
+                                <div id="expand-home-text2" data-toggle="collapse" data-target="#demo{{$key + 1}}" class="collapsed" aria-expanded="false">+</div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
+                    <a href="asdasd" class="btn main-btn">Сообщить о магазине-мошеннике</a>
                 </div>
             </div>
         </div>

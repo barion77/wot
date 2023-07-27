@@ -18,6 +18,18 @@ a:focus, button:focus{
     outline: 0;
 }
 
+.rel {
+    position: fixed;
+    bottom: 100px;
+    right: -91%;
+    width: 100%;
+    z-index: 555;
+}
+
+.img-href img {
+    max-width: 150px;
+
+}
 
 a:hover{
     text-decoration: none;
@@ -897,6 +909,34 @@ header {
 }
 
 #expand-home-text.open{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#expand-home-text2 {
+    background: #e2e2e2;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    border: 3px solid#f2c244;
+    transition: 0.3s all;
+}
+
+#expand-home-text2:hover {
+    background: #f2c244;
+}
+
+#expand-home-text2.open{
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.png">
-    <link href="{{ asset('css/pe-icon-7-stroke.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pe-icon-7-stroke.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet">
@@ -90,11 +90,14 @@
     <a href="{{ route('index') }}" class="btn main-btn see-all">Перейти в магазин</a>
     <div class="sidebar-title">Информация</div>
     <ul class="sidebar-list">
-        <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
-        <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
+        <li><a href="{{ url('guarantee') }}">Гарантии</a></li>
+        <li><a href="{{ url('scammers') }}">Магазины-мошенники</a></li>
         <li><a href="{{ route('review') }}">Отзывы</a></li>
         <li><a href="{{ url('support') }}">ЧаВо</a></li>
-        <li><a href="{{ route('page.rules') }}">Правила магазина</a></li>
+        <li><a href="{{ url('rules') }}">Правила магазина</a></li>
+        @if($settings->free_button_status)
+            <li><a href="{{ url($settings->free_button_link) }}">{{ $settings->free_button_title }}</a></li>
+        @endif
     </ul>
 </div>
 
@@ -153,6 +156,12 @@
         </div>
     </div>
 
+    <div class="rel">
+        <a class="img-href" href="{{ !empty($settings->telegram_support_link) ? $settings->telegram_support_link : '' }}">
+            <img src="{{ asset('images/widget.png') }}" alt="">
+        </a>
+    </div>
+
     <footer>
         <div class="advantages">
             <div class="container">
@@ -207,11 +216,14 @@
                 <div class="col-md-6">
                     <h5>Информация</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('page.guarantee') }}">Гарантии</a></li>
-                        <li><a href="{{ route('page.scammer') }}">Магазины-мошенники</a></li>
+                        <li><a href="{{ url('guarantee') }}">Гарантии</a></li>
+                        <li><a href="{{ url('scammers') }}">Магазины-мошенники</a></li>
                         <li><a href="{{ route('review') }}">Отзывы</a></li>
                         <li><a href="{{ url('support') }}">ЧаВо</a></li>
                         <li><a href="{{ url('rules') }}">Правила магазина</a></li>
+                        @if($settings->free_button_status)
+                            <li><a href="{{ url($settings->free_button_link) }}">{{ $settings->free_button_title }}</a></li>
+                        @endif
                         <li><a href="{{ !empty($settings->telegram_channel_link) ? $settings->telegram_channel_link : '' }}">Наш телеграмм</a></li>
                     </ul>
                 </div>

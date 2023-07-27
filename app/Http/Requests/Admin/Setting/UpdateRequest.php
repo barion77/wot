@@ -30,6 +30,9 @@ class UpdateRequest extends FormRequest
             'telegram_support_link' => 'required',
             'telegram_channel_link' => 'required',
             'zelenka_token' => 'required',
+            'free_button_title' => 'nullable',
+            'free_button_link' => 'nullable',
+            'free_button_status' => 'required|numeric'
         ];
     }
 }

@@ -120,6 +120,9 @@ $(document).ready(function(){
     $('#expand-home-text').click(function(){
         $(this).toggleClass('open');
     });
+    $('#expand-home-text2').click(function(){
+        $(this).toggleClass('open');
+    });
 
     $('.main-banner').owlCarousel({
         loop:true,
@@ -203,7 +206,7 @@ $(document).ready(function(){
     } else {
       buttonUp.fadeOut();
     }
-  });	
+  });
 
   buttonUp.on('click', function () {
     $('body, html').animate({
