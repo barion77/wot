@@ -38,12 +38,6 @@ Route::post('/orders/get', [\App\Http\Controllers\OrdersController::class, 'inde
 Route::post('/product/buy/{product}', [\App\Http\Controllers\ProductsController::class, 'buy'])->name('product.buy');
 Route::get('/purchase/product/{invoice}', [\App\Http\Controllers\ProductsController::class, 'getPurchaseDetails'])->name('purchase.details');
 
-// Info pages
-Route::get('/guarantee', [\App\Http\Controllers\PagesController::class, 'guarantee'])->name('page.guarantee');
-Route::get('/activation', [\App\Http\Controllers\PagesController::class, 'activation'])->name('page.activation');
-Route::get('/rules', [\App\Http\Controllers\PagesController::class, 'rules'])->name('page.rules');
-Route::get('/scammers', [\App\Http\Controllers\PagesController::class, 'scammers'])->name('page.scammer');
-
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', \App\Http\Controllers\Admin\IndexController::class)->name('admin.index');
@@ -153,4 +147,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/{page}', [\App\Http\Controllers\PagesController::class, 'showPage'])->name('page.show');
+Route::get('/{slug}', [\App\Http\Controllers\PagesController::class, 'showPage'])->name('page.show');

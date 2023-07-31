@@ -35,8 +35,19 @@ class PagesController extends Controller
         return view('pages.scammers', compact('scammers'));
     }
 
-    public function showPage(Page $page)
+    public function showPage($slug)
     {
-        return view('pages.dynamic', compact('page'));
+
+        $page = Page::where('slug', $slug)->first();
+        if (!empty($page))
+            return view('pages.dynamic', compact('page'));
+
+        if (view()->exists("pages.$slug")) {
+            $scammers = Scammer::all();
+
+            return view("pages.$slug", compact('scammers'));
+        }
+
+        abort(404);
     }
 }
