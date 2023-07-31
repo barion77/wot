@@ -44,13 +44,6 @@ Route::get('/activation', [\App\Http\Controllers\PagesController::class, 'activa
 Route::get('/rules', [\App\Http\Controllers\PagesController::class, 'rules'])->name('page.rules');
 Route::get('/scammers', [\App\Http\Controllers\PagesController::class, 'scammers'])->name('page.scammer');
 
-Route::get('/{page}', [\App\Http\Controllers\PagesController::class, 'showPage'])->name('page.show');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', \App\Http\Controllers\Admin\IndexController::class)->name('admin.index');
@@ -154,3 +147,10 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
 });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/{page}', [\App\Http\Controllers\PagesController::class, 'showPage'])->name('page.show');
