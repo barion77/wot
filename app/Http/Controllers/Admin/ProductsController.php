@@ -100,6 +100,9 @@ class ProductsController extends Controller
         $products = Product::all();
 
         return DataTables::of($products)
+            ->editColumn('title', function ($product) {
+                return "<a href='/products/$product->slug'>$product->title</a>";
+            })
             ->editColumn('category', function($product) {
                 return $product->category->title;
             })
@@ -112,6 +115,6 @@ class ProductsController extends Controller
                 $delete = '<form style="display:inline-block;" action="' . route('admin.product.delete', $product->id) . '" method="post">' . csrf_field() . method_field('DELETE') . '<input type="submit" class="btn btn-danger" value="Удалить"></form>';
 
                 return $edit . $delete;
-            })->rawColumns(['actions'])->make(true);
+            })->rawColumns(['actions', 'title'])->make(true);
     }
 }
